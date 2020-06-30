@@ -102,6 +102,15 @@ y_pred = ann.predict(X_test)
 
 np.set_printoptions(precision = 2)
 
+from sklearn.metrics import confusion_matrix
+cutoff = 0.5
+y_pred_classes = np.zeros_like(y_pred)
+y_pred_classes[y_pred > cutoff] = 1
+y_test_classes = np.zeros_like(y_pred)
+y_test_classes[y_test > cutoff] = 1
+cm = confusion_matrix(y_test_classes, y_pred_classes)
+print(cm)
+
 
 
 
